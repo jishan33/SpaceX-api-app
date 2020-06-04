@@ -1,66 +1,46 @@
-const fetch = require("node-fetch")
+const readline = require('readline-sync');
+const fetch = require("node-fetch");
+const chalk = require('chalk');
+const emoji = require('node-emoji');
+const _ = require("lodash");
+const data = require("./data.js");
 
-const capsules = async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/capsules')
-  const data = await response.json()
-  
-  for (item of data) {
-    console.log(item.capsule_id)
-  }
+const {log} = console;
+const rocket = emoji.get('rocket');
+
+
+const main = async () => {
+  // Greeting 
+  log("Hi, What's your name?");
+  let name = readline.question('>');
+  log(`${chalk.blue(name)}, Welcome to ${rocket.repeat(3) + chalk.blue("SpaceX Termainal App") + rocket.repeat(3)}`);
+
+  // About us 
+  log(chalk.blue(`<>`).repeat(25))
+  log(`Here are some basic information about SpaceX: `)
+  log(`Contact us through the links provided below ${emoji.get(`smile_cat`)}`)
+  log(chalk.blue(`<>`).repeat(25))
+
+  await data.info();
+
+  // Upcoming launchs
+  log(emoji.get('fireworks') + chalk.white.bgMagentaBright.bold(`In 2020, We have more launchs coming, join us for these exciting upcoming launches`) + emoji.get('fireworks'))
+
+  await data.launches();
 }
 
-// capsules();
+
+main();
 
 
 
-const cores = async () => {
-  try{
-  const response = await fetch('https://api.spacexdata.com/v3/cores')
-  const data = await response.json()
-  for (item of data) {
-    console.log(item.core_serial)
-  }
-  } catch(error){
-    console.log(error);
 
-  }
-}
 
-cores();
 
-const launaches = async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/launches')
-  const data = await response.json()
-  // console.log(data)
-  let missionArr = []
-  for (item of data) {
-    // console.log(item.rocket.rocket_name)
-    if (item.upcoming=== true &item.launch_year === '2020'){
-      missionArr.push(item.mission_name)
-    }
-  
-  }
 
-  console.log(missionArr)
-}
 
-// launaches();
 
-const info = async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/info')
-  const data = await response.json()
-  console.log(data)
-}
 
-// info();
 
-const missions = async () => {
-  const response = await fetch('https://api.spacexdata.com/v3/missions')
-  const data = await response.json()
-  for (let item of data) {
-    console.log(item.mission_name)
-  }
-}
 
-// missions();
 
