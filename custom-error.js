@@ -8,15 +8,15 @@ class MyError extends Error {
     }
 }
 
-function test() {
-  throw new MyError("Whoops!");
-}   
+// function test() {
+//   throw new MyError("Whoops!");
+// }   
    
-// callback with a custom error object
-let getError = (cb) => cb(new MyError(chalk.red('there was a problem')))
+// // callback with a custom error object
+// let getError = (cb) => cb(new MyError(chalk.red('there was a problem')))
 
-// get the error and log the stack trace
-getError((err) => console.log(err))
+// // get the error and log the stack trace
+// getError((err) => console.log(err))
 
 
 

@@ -1,6 +1,7 @@
 const fetch = require("node-fetch")
 const chalk = require('chalk');
 const emoji = require('node-emoji');
+const CustomError = require("./custom-error")
 
 
 const errMessage = chalk.yellowBright(`error is in data section `) + emoji.get('cry')
@@ -9,17 +10,17 @@ const errMessage = chalk.yellowBright(`error is in data section `) + emoji.get('
 const capsules = async () => {
   try {
     const response = await fetch('https://api.spacexdata.com/v3/capsules')
-    const data = await response.jsons()
+    const data = await response.json()
 
     for (item of data) {
       console.log(item.capsule_id)
     }
   } catch (error) {
-    throw (errMessage)
+    throw new CustomError(errMessage)
   }
 }
 
-capsules();
+// capsules();
 
 
 
@@ -31,11 +32,11 @@ const cores = async () => {
       console.log(item.core_serial)
     }
   } catch (error) {
-    throw (errMessage)
+    throw new CustomError(errMessage)
   }
 }
 
-// cores();
+cores();
 
 const launches = async () => {
 
@@ -54,7 +55,7 @@ const launches = async () => {
       }
     }
   } catch (error) {
-    throw (errMessage)
+    throw new CustomError(errMessage)
   }
 }
 
@@ -66,7 +67,7 @@ const info = async () => {
     const data = await response.json()
     console.log(data)
   } catch (error) {
-    throw (errMessage)
+    throw new CustomError(errMessage)
   }
 }
 
@@ -80,7 +81,8 @@ const missions = async () => {
       console.log(item.mission_name)
     }
   } catch (error) {
-    throw (errMessage)
+    throw new CustomError(errMessage)
+
   }
 }
 
