@@ -1,19 +1,18 @@
 const readline = require('readline-sync');
-const fetch = require("node-fetch");
 const chalk = require('chalk');
 const emoji = require('node-emoji');
-const _ = require("lodash");
 const data = require("./data.js");
 
+
 const {log} = console;
-const rocket = emoji.get('rocket');
+const rocket = emoji.get('rocket').repeat(3);
 
 
 const main = async () => {
   // Greeting 
   log("Hi, What's your name?");
   let name = readline.question('>');
-  log(`${chalk.blue(name)}, Welcome to ${rocket.repeat(3) + chalk.blue("SpaceX Termainal App") + rocket.repeat(3)}`);
+  log(`${chalk.blue(name)}, Welcome to ${rocket + chalk.blue("SpaceX Termainal App") + rocket}`);
 
   // About us 
   log(chalk.blue(`<>`).repeat(25))
@@ -23,7 +22,7 @@ const main = async () => {
 
   await data.info();
 
-  // Upcoming launchs
+  // Upcoming launches
   log(emoji.get('fireworks') + chalk.white.bgMagentaBright.bold(`In 2020, We have more launchs coming, join us for these exciting upcoming launches`) + emoji.get('fireworks'))
 
   await data.launches();
@@ -31,6 +30,7 @@ const main = async () => {
 
 
 main();
+
 
 
 
