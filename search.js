@@ -1,5 +1,7 @@
 const yargs = require('yargs');
 const data = require("./data.js");
+const chalk = require('chalk');
+
 const Table = require('cli-table');
 
 
@@ -11,6 +13,7 @@ const argv = yargs
   .command('links', 'Tells the links of spaceX ')
   .command('introduction', 'Tells the introduction of spaceX ')
   .command('events', 'Tells the historical events of spaceX')
+  
   
   .option('time', {
     alias: 't',
@@ -61,16 +64,22 @@ if (argv._.includes('events')) {
   const detail = async () => {
     const events = await data.historicalEvents();
     let eventsTable = new Table({head: [ "Date", "Events"],
-    style: {head: ['green']},});
+    style: {head: ['green']}});
 
     for (let event of events) {
       eventsTable.push( [event.event_date_utc, event.title])
+      console.log(chalk.blue.bold(event.title))
+      console.log(event.details)
+      console.log("")
+      console.log(chalk.green(`=`).repeat(100))
+      console.log("")
     }
 
      console.log(eventsTable.toString());
   }
   detail();
 }
+
 
 
 
