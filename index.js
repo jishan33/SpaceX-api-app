@@ -20,7 +20,14 @@ const main = async () => {
   log(`Contact us through the links provided below ${emoji.get(`smile_cat`)}`)
   log(chalk.blue(`<>`).repeat(25))
 
-  await data.info();
+  log(chalk.blue(`-`).repeat(25))
+
+  const testx = await data.getInfo()
+  log(testx)
+  log(chalk.blue(`-`).repeat(25))
+  log(testx.ceo)
+
+  log(chalk.blue(`-`).repeat(25))
 
   // Upcoming launches
   log(emoji.get('fireworks') + chalk.white.bgMagentaBright.bold(`In 2020, We have more launchs coming, join us for these exciting upcoming launches`) + emoji.get('fireworks'))
