@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const data = require("./data.js");
-const axios = require("axios")
+
 
 
 const argv = yargs
@@ -8,10 +8,7 @@ const argv = yargs
   .command('company', 'Tells the ceo of spaceX ')
   .command('links', 'Tells the ceo of spaceX ')
   .command('introduction', 'Tells the ceo of spaceX ')
-
-
-
-
+  
   .option('time', {
     alias: 't',
     description: 'Tell the present Time',
@@ -27,34 +24,34 @@ if (argv.time) {
 
 if (argv._.includes('ceo')) {
   const detail = async () => {
-  const info1 = await data.info();
-  console.log(info1.ceo) 
+    const info1 = await data.info();
+    console.log(info1.ceo)
   }
-  detail() ;
+  detail();
 }
 
 if (argv._.includes('company')) {
   const detail = async () => {
-  const info1 = await data.info();
-  console.log(info1.name) 
+    const info1 = await data.info();
+    console.log(info1.name)
   }
-  detail() ;
+  detail();
 }
 
 if (argv._.includes('links')) {
   const detail = async () => {
-  const info1 = await data.info();
-  console.log(info1.links) 
+    const info1 = await data.info();
+    console.log(info1.links)
   }
-  detail() ;
+  detail();
 }
 
 if (argv._.includes('introduction')) {
   const detail = async () => {
-  const info1 = await data.info();
-  console.log(info1.summary) 
+    const info1 = await data.info();
+    console.log(info1.summary)
   }
-  detail() ;
+  detail();
 }
 
 

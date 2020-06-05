@@ -2,7 +2,7 @@ const fetch = require("node-fetch")
 const chalk = require('chalk');
 const emoji = require('node-emoji');
 const CustomError = require("./custom-error")
-const fs = require("fs");
+
 
 
 const errMessage = chalk.yellowBright(`error is in data section `) + emoji.get('cry')
