@@ -47,25 +47,15 @@ const launches = async () => {
 
 // launches();
 
-let ceo;
+
 const info = async () => {
   try {
     const response = await fetch('https://api.spacexdata.com/v3/info')
     const data = await response.json()
-    // console.log(data);
     return data;
     
   } catch (error) {
     throw new CustomError(errMessage)
-  }
-}
-
-// figuring how to access individual data from search.js 
-const infoDetail = async () => {
-  let data = await info();
-  let ceo = data.ceo;
-  return {
-    ceo: data.ceo
   }
 }
 
