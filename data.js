@@ -69,7 +69,7 @@ const infoDetail = async () => {
   }
 }
 
-
+console.log(infoDetail())
 
 
 

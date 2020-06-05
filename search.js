@@ -1,31 +1,38 @@
 const yargs = require('yargs');
 const data = require("./data.js");
+const axios = require("axios")
 
 
-const argv = yargs
-  .command('ceo', 'Tells the ceo of spaceX ', {
-    year: {
-      description: 'the year to check for',
-      alias: 'y',
-      type: 'number',
-    }
-  })
-  .option('time', {
-    alias: 't',
-    description: 'Tell the present Time',
-    type: 'boolean',
-  })
-  .help()
-  .alias('help', 'h')
+const options = yargs
+  
+  .option("s", { alias: "search", describe: "Search term", type: "string" })
   .argv;
 
-if (argv.time) {
-  console.log('The current time is: ', new Date().toLocaleTimeString());
+if (options.search) {
+  console.log(`Searching for jokes about ${options.search}...`)
+} else {
+  console.log("Here's a basic info for you:");
 }
 
-if (argv._.includes('ceo')) {
-  data.info()  
-}
+// The url depends on searching or not
+const url = options.search ? `https://api.spacexdata.com/v3/info${escape(options.search)}` : data.info();
 
+axios.get(url, { headers: { Accept: "application/json" } })
+  .then(res => {
+    for(let key in data.info() ){
+        console.log(key)
+      }
 
-console.log(argv);
+    // if (options.search) {
+    //   // if searching for value, loop over the results
+    //   for(let key in data ){
+    //     console.log(key)
+    //   }
+     
+    //   if (res.data.results.length === 0) {
+    //     console.log("no value found :'(");
+    //   }
+    // } else {
+    //   console.log(res.data.value);
+    // }
+  });
