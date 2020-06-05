@@ -12,7 +12,7 @@ const boxenOptions = {
   padding: 1,
   margin: 1,
   borderStyle: "round",
-  borderColor: "cyanBright",
+  borderColor: "blue",
   backgroundColor: "#555555"
 };
 
@@ -42,21 +42,23 @@ const main = async () => {
   const launchesBox = boxen(upcomingLaunches, boxenOptions)
   log(launchesBox)
 
-
   await data.launches();
 
-  const commands = `search engine: Try the command lines below to see the results` + emoji.get('rocket')
+  // Search feature
+  const commands = emoji.get("white_check_mark") + chalk.cyan.bold(` Search Engine:`) +chalk.white(` Try the command lines below to see the results `)
+
   log(commands)
 
-  var table = new Table({ head: ["", "Search Commands"] });
+  // Commands table
+  let table = new Table({head: ["", "Search Commands"]});
 
   table.push(
     { 'Company': ['$ node search.js company'] }, { 'SpaceX CEO': ['$ node search.js ceo'] },
     { 'Links': ['$ node search.js links'] },
     { 'Introduction': ['$ node search.js introduction'] }
   );
-
-  console.log(table.toString());
+  const tableBox = boxen(table.toString(), boxenOptions)
+  console.log(tableBox);
 
 }
 
