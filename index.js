@@ -57,7 +57,9 @@ const main = async () => {
     { 'Company': ['$ node search.js company'] }, { 'SpaceX CEO': ['$ node search.js ceo'] },
     { 'Links': ['$ node search.js links'] },
     { 'Introduction': ['$ node search.js introduction']},
-    { 'Historical Events': ['$ node search.js events']}
+    { 'Historical Events': ['$ node search.js events']},
+    { 'All Rockets': ['$ node search.js rockets']}
+
   );
   const tableBox = boxen(table.toString(), boxenOptions)
   console.log(tableBox);

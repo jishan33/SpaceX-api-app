@@ -13,6 +13,7 @@ const argv = yargs
   .command('links', 'Tells the links of spaceX ')
   .command('introduction', 'Tells the introduction of spaceX ')
   .command('events', 'Tells the historical events of spaceX')
+  .command('rockets', 'Show all rockets')
   
   
   .option('time', {
@@ -76,6 +77,14 @@ if (argv._.includes('events')) {
     }
 
      console.log(eventsTable.toString());
+  }
+  detail();
+}
+
+if (argv._.includes('rockets')) {
+  const detail = async () => {
+    const rockets = await data.rockets();
+    console.log(rockets)
   }
   detail();
 }

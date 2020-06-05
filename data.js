@@ -65,13 +65,25 @@ const historicalEvents = async () => {
   }
 }
 
+
+const rockets = async () => {
+  try {
+    const response = await fetch('https://api.spacexdata.com/v3/payloads')
+    const data = await response.json()
+    return data;
+    
+  } catch (error) {
+    throw new CustomError(errMessage)
+  }
+}
+
 // const test = async() => {
-// const events = await historicalEvents();
+// const events = await rockets();
 // console.log(events)
 
 // }
 
-
+// test();
 
 
 
@@ -81,6 +93,7 @@ module.exports = {
   capsules,
   launches,
   info,
-  historicalEvents
+  historicalEvents,
+  rockets
 }
 
