@@ -21,9 +21,6 @@ const capsules = async () => {
   }
 }
 
-// capsules();
-
-
 const launches = async () => {
 
   try {
@@ -45,8 +42,6 @@ const launches = async () => {
   }
 }
 
-// launches();
-
 
 const info = async () => {
   try {
@@ -59,16 +54,33 @@ const info = async () => {
   }
 }
 
+const historicalEvents = async () => {
+  try {
+    const response = await fetch('https://api.spacexdata.com/v3/history')
+    const data = await response.json()
+    return data;
+    
+  } catch (error) {
+    throw new CustomError(errMessage)
+  }
+}
+
+// const test = async() => {
+// const events = await historicalEvents();
+// console.log(events)
+
+// }
 
 
 
 
 
-// missions();
+
 
 module.exports = {
   capsules,
   launches,
-  info
+  info,
+  historicalEvents
 }
 

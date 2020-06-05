@@ -1,13 +1,16 @@
 const yargs = require('yargs');
 const data = require("./data.js");
+const Table = require('cli-table');
+
 
 
 
 const argv = yargs
   .command('ceo', 'Tells the ceo of spaceX ')
-  .command('company', 'Tells the ceo of spaceX ')
-  .command('links', 'Tells the ceo of spaceX ')
-  .command('introduction', 'Tells the ceo of spaceX ')
+  .command('company', 'Tells the company of spaceX ')
+  .command('links', 'Tells the links of spaceX ')
+  .command('introduction', 'Tells the introduction of spaceX ')
+  .command('events', 'Tells the historical events of spaceX')
   
   .option('time', {
     alias: 't',
@@ -53,6 +56,22 @@ if (argv._.includes('introduction')) {
   }
   detail();
 }
+
+if (argv._.includes('events')) {
+  const detail = async () => {
+    const events = await data.historicalEvents();
+    let eventsTable = new Table({head: [ "Date", "Events"],
+    style: {head: ['green']},});
+
+    for (let event of events) {
+      eventsTable.push( [event.event_date_utc, event.title])
+    }
+
+     console.log(eventsTable.toString());
+  }
+  detail();
+}
+
 
 
 

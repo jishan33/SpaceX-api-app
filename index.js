@@ -39,23 +39,25 @@ const main = async () => {
 
   // Upcoming launches
   const upcomingLaunches = emoji.get('fireworks') + chalk.white.bold(`In 2020, join us for these exciting upcoming launches`) + emoji.get('fireworks')
+  
   const launchesBox = boxen(upcomingLaunches, boxenOptions)
   log(launchesBox)
 
   await data.launches();
 
   // Search feature
-  const commands = emoji.get("white_check_mark") + chalk.cyan.bold(` Search Engine:`) +chalk.white(` Try the command lines below to see the results `)
+  const commands = emoji.get("white_check_mark") + chalk.greenBright(` Search Engine:`) +chalk.white(` Try the command lines below to see the results `)
 
   log(commands)
 
   // Commands table
-  let table = new Table({head: ["", "Search Commands"]});
+  let table = new Table({head: ["", "Search Commands"], style: {head: ['green']},});
 
   table.push(
     { 'Company': ['$ node search.js company'] }, { 'SpaceX CEO': ['$ node search.js ceo'] },
     { 'Links': ['$ node search.js links'] },
-    { 'Introduction': ['$ node search.js introduction'] }
+    { 'Introduction': ['$ node search.js introduction']},
+    { 'Historical Events': ['$ node search.js events']}
   );
   const tableBox = boxen(table.toString(), boxenOptions)
   console.log(tableBox);
