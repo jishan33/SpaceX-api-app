@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "boxen": "^4.0.0",
     "chalk": "^4.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",

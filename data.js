@@ -70,8 +70,7 @@ const infoDetail = async () => {
 }
 
 
-let details = await infoDetail();
-details.ceo
+
 
 
 

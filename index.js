@@ -2,17 +2,29 @@ const readline = require('readline-sync');
 const chalk = require('chalk');
 const emoji = require('node-emoji');
 const data = require("./data.js");
+const boxen = require("boxen");
 
-
+// simplify console log, CSS, emoji 
 const {log} = console;
 const rocket = emoji.get('rocket').repeat(3);
+const boxenOptions = {
+ padding: 1,
+ margin: 1,
+ borderStyle: "round",
+ borderColor: "cyanBright",
+ backgroundColor: "#555555"
+};
 
 
 const main = async () => {
   // Greeting 
   log("Hi, What's your name?");
   let name = readline.question('>');
-  log(`${chalk.blue(name)}, Welcome to ${rocket + chalk.blue("SpaceX Termainal App") + rocket}`);
+  const greeting = `${chalk.blueBright.bold(name)}, Welcome to ${rocket + chalk.cyanBright.bold("SpaceX Termainal App") + rocket}`
+  const greetingBox = boxen(greeting, boxenOptions)
+  
+  log(greetingBox)
+  
 
   // About us 
   log(chalk.blue(`<>`).repeat(25))
@@ -23,7 +35,10 @@ const main = async () => {
   await data.info();
 
   // Upcoming launches
-  log(emoji.get('fireworks') + chalk.white.bgMagentaBright.bold(`In 2020, We have more launchs coming, join us for these exciting upcoming launches`) + emoji.get('fireworks'))
+  const upcomingLaunches =  emoji.get('fireworks') + chalk.white.bold(`In 2020, join us for these exciting upcoming launches`) + emoji.get('fireworks')
+  const launchesBox = boxen(upcomingLaunches, boxenOptions)
+  log(launchesBox)
+
 
   await data.launches();
 }
