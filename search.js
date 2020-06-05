@@ -83,6 +83,5 @@ if (argv._.includes('events')) {
 
 
 
-
-
-console.log(argv);
+let myArgs = process.argv.slice(2);
+console.log(`> ` + myArgs + ` ?`);
