@@ -4,6 +4,9 @@ const emoji = require('node-emoji');
 const data = require("./data.js");
 const boxen = require("boxen");
 const Table = require('cli-table');
+const fs = require("fs");
+
+
 
 // simplify console log, CSS, emoji 
 const { log } = console;
@@ -19,6 +22,8 @@ const boxenOptions = {
 
 const main = async () => {
   // Greeting 
+  const contents = fs.readFileSync("image.txt", "utf8");
+  log(contents);
   log("Hi, What's your name?");
   let name = readline.question('>');
   const greeting = `${chalk.blueBright.bold(name)}, Welcome to ${rocket + chalk.cyanBright.bold("SpaceX Termainal App") + rocket}`
