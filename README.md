@@ -10,7 +10,7 @@
 - search engine
 
 <p align="center">
-  <img src="./docs/search-engine.png" width="400px" title="command-lines">
+  <img src="./docs/search-engine.png" width="600px" title="command-lines">
 </p>
 
 
