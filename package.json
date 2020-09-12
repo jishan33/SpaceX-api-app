@@ -17,7 +17,7 @@
     "lodash": "^4.17.19",
     "moment": "^2.26.0",
     "node-emoji": "^1.10.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "readline-sync": "^1.4.10",
     "yargs": "^13.2.4"
   }
